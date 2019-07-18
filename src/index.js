@@ -7,7 +7,6 @@ import {
   Animated,
   Easing,
   FlatList,
-  StatusBar,
   Image
 } from "react-native";
 import { Card, CardContent, CloseButton, DetailsContent } from "./components";
@@ -40,8 +39,6 @@ class Test extends React.Component {
   };
 
   expand = activeCard => () => {
-    StatusBar.setHidden(true, "slide");
-
     this.cards[activeCard].measure((x, y, width, height, pageX, pageY) => {
       this.oldPosition = {
         x: pageX,
@@ -133,8 +130,6 @@ class Test extends React.Component {
             duration: 100
           })
         ]).start(() => {
-          StatusBar.setHidden(false, "slide");
-
           this.setState({
             activeCard: 0
           });
